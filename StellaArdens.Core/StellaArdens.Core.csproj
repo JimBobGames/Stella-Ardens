@@ -74,14 +74,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reference\GunData.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mods\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\design.html" />
+    <Content Include="Mods\readme.txt" />
     <Content Include="Reference\gundata.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
