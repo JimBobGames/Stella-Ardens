@@ -1,0 +1,4 @@
+﻿[
+ {"Name":"6 In L77","GunId":1,"CaliberInInches":6.0,"BarrelLength":77.0},
+ {"Name":"4 In L45","GunId":2,"CaliberInInches":4.0,"BarrelLength":45.0}
+]
