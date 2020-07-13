@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace StellaArdens.Core.Data
 {
     /// <summary>
     /// 
     /// </summary>
-    public class Ship
+    public class Ship : NamedGameOject
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int ShipId { get; set; }
         /// <summary>
         /// What division this ship belongs to
         /// </summary>
-        public int DivisionId { get; set; }
+        public Division Division { get; set; }
 
         /// <summary>
         /// What design
         /// </summary>
-        public int DesignId { get; set; }
+        public Design Design { get; set; }
     }
 }

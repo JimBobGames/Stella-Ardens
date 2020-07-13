@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,22 +20,21 @@ namespace StellaArdens.Core.Data
         Tanker
     }
 
-    public class Division
+    public class Division : NamedGameOject
     {
         public int Id { get; set; }
-        public string Name { get; set; }
         /// <summary>
         /// What task force this ship belongs to
         /// </summary>
-        public int TaskForceId { get; set; }
+        public TaskForce TaskForce { get; set; }
 
-
-        private List<int> ships = new List<int>();
 
         /// <summary>
         /// The ships in this division
         /// /// </summary>
-        public List<int> Ships { get { return ships; } }
+        public ObservableCollection<Ship> Ships { get { return shipsList; } }
+
+        public ObservableCollection<Ship> shipsList = new ObservableCollection<Ship>();
 
     }
 }

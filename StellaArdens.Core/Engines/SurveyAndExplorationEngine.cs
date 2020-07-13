@@ -17,7 +17,7 @@ namespace StellaArdens.Core.Engines
             {
                 return 0;
             }
-            Design d = Game.GetDesign(s.DesignId);
+            Design d = s.Design;
 
             // modified by crew quality perhaps ?
             return d.SurveySpeed;

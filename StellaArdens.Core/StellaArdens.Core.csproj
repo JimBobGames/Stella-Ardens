@@ -51,8 +51,10 @@
     <Compile Include="Data\GameEvent.cs" />
     <Compile Include="Data\GameEventLog.cs" />
     <Compile Include="Data\GameStandardIds.cs" />
+    <Compile Include="Data\Hull.cs" />
     <Compile Include="Data\IStellaArdensGame.cs" />
     <Compile Include="Data\Module.cs" />
+    <Compile Include="Data\NamedGameOject.cs" />
     <Compile Include="Data\Nation.cs" />
     <Compile Include="Data\Operation.cs" />
     <Compile Include="Data\Planet.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Persistence\ReferenceDataLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reference\GunData.cs" />
+    <Compile Include="Util\SortedObservableCollection.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

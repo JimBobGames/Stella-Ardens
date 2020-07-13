@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace StellaArdens.Core.Data
 {
@@ -26,21 +27,21 @@ namespace StellaArdens.Core.Data
         /// <summary>
         /// The launching starbase
         /// </summary>
-        public int StarbaseId { get; set; }
+        public Starbase Starbase { get; set; }
 
         /// <summary>
         /// The fleet id
         /// </summary>
-        public int FleetId { get; set; }
+        public Fleet Fleet { get; set; }
 
         /// <summary>
         /// The task force id
         /// </summary>
-        public int TaskForceId { get; set; }
+        public TaskForce TaskForce { get; set; }
 
         /// <summary>
         /// The target object
         /// </summary>
-        public int TargetSolarSystemObjectId { get; set; }
+        public SolarSystemObject TargetSolarSystemObject { get; set; }
     }
 }

@@ -7,6 +7,9 @@ namespace StellaArdens.Core.Data
         IReadOnlyList<Nation> NationsListUnsorted { get; }
         IReadOnlyList<Nation> NationsListAlphabetical { get; }
         Nation GetNation(int id);
+        IReadOnlyList<Hull> HullsListUnsorted { get; }
+        IReadOnlyList<Hull> HullsListAlphabetical { get; }
+        Hull GetHull(int id);
         IReadOnlyList<Design> DesignsListUnsorted { get; }
         IReadOnlyList<Design> DesignsListAlphabetical { get; }
         Design GetDesign(int id);

@@ -27,7 +27,7 @@ namespace StellaArdens.Core.Data
         /// <summary>
         /// The id
         /// </summary>
-        public int DestinationWarpLineId { get; set; }
+        public WarpLine DestinationWarpLine { get; set; }
 
     }
 }

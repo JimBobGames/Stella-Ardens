@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using Newtonsoft.Json;
 
 namespace StellaArdens.Core.Data
 {
@@ -59,22 +61,26 @@ namespace StellaArdens.Core.Data
         /// <summary>
         /// The store of nations
         /// </summary>
-        private readonly Dictionary<int, Nation> nations = new Dictionary<int, Nation>();
+        [JsonProperty]
+        private Dictionary<int, Nation> nations = new Dictionary<int, Nation>();
 
         /// <summary>
         /// The store of fleets
         /// </summary>
-        private readonly Dictionary<int, Fleet> fleets = new Dictionary<int, Fleet>();
+        [JsonProperty]
+        private Dictionary<int, Fleet> fleets = new Dictionary<int, Fleet>();
 
         /// <summary>
         /// The store of task forces
         /// </summary>
-        private readonly Dictionary<int, TaskForce> taskForces = new Dictionary<int, TaskForce>();
+        [JsonProperty]
+        private Dictionary<int, TaskForce> taskForces = new Dictionary<int, TaskForce>();
 
         /// <summary>
         /// The store of divisions
         /// </summary>
-        private readonly Dictionary<int, Division> divisions = new Dictionary<int, Division>();
+        [JsonProperty]
+        private Dictionary<int, Division> divisions = new Dictionary<int, Division>();
 
         /// <summary>
         /// The store of ships
@@ -83,14 +89,23 @@ namespace StellaArdens.Core.Data
 
         internal void AddDesign(Design design)
         {
-            Designs[design.Id] = design;
+            Designs[design.DesignId] = design;
         }
+
+        /// <summary>
+        /// The store of hulls
+        /// </summary>
+        [JsonProperty]
+        private readonly Dictionary<int, Hull> hulls = new Dictionary<int, Hull>();
 
         /// <summary>
         /// The store of designs
         /// </summary>
+        [JsonProperty]
         private readonly Dictionary<int, Design> designs = new Dictionary<int, Design>();
 
+
+        [JsonProperty]
         public Dictionary<int, GunData> GunData { get; } = new Dictionary<int, GunData>();
 
         public Dictionary<int, Nation> Nations
@@ -101,6 +116,14 @@ namespace StellaArdens.Core.Data
             }
         }
 
+        public Dictionary<int, Hull> Hulls
+        {
+            get
+            {
+                return hulls;
+            }
+        }
+
         public Dictionary<int, Fleet> Fleets
         {
             get
@@ -108,6 +131,7 @@ namespace StellaArdens.Core.Data
                 return fleets;
             }
         }
+
         public Dictionary<int, TaskForce> TaskForces
         {
             get
@@ -123,6 +147,7 @@ namespace StellaArdens.Core.Data
                 return divisions;
             }
         }
+
         public Dictionary<int, Ship> Ships
         {
             get
@@ -130,6 +155,7 @@ namespace StellaArdens.Core.Data
                 return ships;
             }
         }
+
         public Dictionary<int, Design> Designs
         {
             get
@@ -154,30 +180,36 @@ namespace StellaArdens.Core.Data
             return value;
         }
 
+        public IReadOnlyList<Hull> HullsListUnsorted => hulls.Values.ToList();
+        public IReadOnlyList<Hull> HullsListAlphabetical => new List<Hull>(hulls.Values.ToList()).OrderBy(o => o.Name).ToList();
+        public Hull GetHull(int id)
+        {
+            Hulls.TryGetValue(id, out Hull value);
+            return value;
+        }
+
         /// <summary>
         /// Get a list of task forces, typically one of the fleet id OR the task force id will be 0 (invalid)
         /// </summary>
         /// <param name="fleetId"></param>
         /// <param name="taskForceId"></param>
         /// <returns></returns>
-        public List<TaskForce> GetTaskForceList(int fleetId, int taskForceId)
+        public List<TaskForce> GetTaskForceList(Fleet fleet, TaskForce taskForce)
         {
             List<TaskForce> taskForces = new List<TaskForce>();
 
-            Fleet f = GetFleet(fleetId);
-            if (f != null)
+            if (fleet != null)
             {
-                List<int> l = f.TaskForces;
-                foreach(int i in l)
+                IEnumerable<TaskForce> l = fleet.TaskForces;
+                foreach(TaskForce tf in l)
                 {
-                    taskForces.Add(GetTaskForce(i));
+                    taskForces.Add(tf);
                 }
             }
 
-            TaskForce tf = GetTaskForce(taskForceId);
-            if(tf != null)
+            if(taskForce != null)
             {
-                taskForces.Add(tf);
+                taskForces.Add(taskForce);
             }
             return taskForces;
         }

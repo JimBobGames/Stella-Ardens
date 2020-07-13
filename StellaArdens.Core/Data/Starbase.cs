@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using StellaArdens.Core.Util;
 
 namespace StellaArdens.Core.Data
 {
@@ -13,11 +15,11 @@ namespace StellaArdens.Core.Data
     {
         public Operation StartPoint { get; set; }
 
-        private List<int> fleets = new List<int>();
-
         /// <summary>
         /// The fleets based at this base
         /// </summary>
-        public List<int> Fleets { get { return fleets; } }
+        public SortedObservableCollection<Fleet> Fleets { get { return fleetsList; } }
+
+        public SortedObservableCollection<Fleet> fleetsList = new SortedObservableCollection<Fleet>();
     }
 }

@@ -39,16 +39,16 @@ namespace StellaArdens.Core.Data
         // dreadnoughts
     }
 
-    public class Design
+    public class Design : NamedGameOject
     {
-        public int Id { get; set; }
+        public int DesignId { get; set; }
+        public Hull Hull { get; set; }
         /// <summary>
         /// Indicates the parent design if this is a refit
         /// </summary>
-        public int RefitId { get; set; }
+        public Design RefitFrom { get; set; }
 
         public DesignSize DesignSize { get; set; }
-        public string Name { get; set; }
         public int SurveySpeed
         {
             get

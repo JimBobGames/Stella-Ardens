@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace StellaArdens.Core.Data
 {
-    public class Fleet
+    public class Fleet : NamedGameOject
     {
-        private List<int> taskforces = new List<int>();
+        private ObservableCollection<TaskForce> taskForcesList = new ObservableCollection<TaskForce>();
 
         /// <summary>
         /// The task forces in this division
         /// /// </summary>
-        public List<int> TaskForces { get { return taskforces; } }
+        public ObservableCollection<TaskForce> TaskForces { get { return taskForcesList; } }
+
+        public int FleetId { get; set; }
+
+        public Starbase HomeBase { get; set; }
     }
+
 }

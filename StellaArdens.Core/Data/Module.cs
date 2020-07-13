@@ -19,10 +19,23 @@ namespace StellaArdens.Core.Data
     /// <summary>
     /// The basic module of a ship/starbase
     /// </summary>
-    public class Module
+    public class Module : NamedGameOject
     {
-        public int Id { get; set; }
+        public int ModuleId { get; set; }
 
         public ModuleSize ModuleSize { get; set; }
     }
+
+
+    public class Weapon : Module
+    {
+    }
+    public class Shield : Module
+    {
+    }
+
+    public class Engine : Module
+    {
+    }
+
 }
