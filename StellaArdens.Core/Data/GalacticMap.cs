@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,19 @@ namespace StellaArdens.Core.Data
         /// <summary>
         /// The store of solar systems
         /// </summary>
+        [JsonProperty]
         private readonly Dictionary<int, SolarSystem> solarSystems = new Dictionary<int, SolarSystem>();
 
         /// <summary>
         /// The store of solar systems objects
         /// </summary>
+        [JsonProperty]
         private readonly Dictionary<int, SolarSystemObject> solarSystemObjects = new Dictionary<int, SolarSystemObject>();
 
         /// <summary>
         /// The store of starbases
         /// </summary>
+        [JsonProperty]
         private readonly Dictionary<int, Starbase> starbases = new Dictionary<int, Starbase>();
 
         public GalacticMap(int size)

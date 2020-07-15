@@ -18,5 +18,7 @@ namespace StellaArdens.Core.Data
         TaskForce GetTaskForce(int id);
         Division GetDivision(int id);
         Ship GetShip(int id);
+
+        Player Player { get; set; }
     }
 }

@@ -15,10 +15,7 @@ namespace StellaArdens.Core.Data
     /// </summary>
     public class WarpLine : SolarSystemObject
     {
-        /// <summary>
-        /// The id
-        /// </summary>
-        public int WarpLineId { get; set; }
+
         /// <summary>
         /// The maximum size of a ship that can pass the warp line
         /// </summary>

@@ -72,10 +72,10 @@
                 </Grid.ColumnDefinitions>
                 <TreeView  Name="tree" Grid.Column="0" Margin="5" ItemsSource="{Binding}">
                     <TreeView.ItemTemplate>
-                        <HierarchicalDataTemplate ItemsSource="{Binding Counties}">
+                <HierarchicalDataTemplate ItemsSource="{Binding SolarSystemObjects}">
                             <TextBlock Text="{Binding Path=Name}"/>
                             <HierarchicalDataTemplate.ItemTemplate>
-                                <HierarchicalDataTemplate ItemsSource="{Binding Cities}">
+                                <HierarchicalDataTemplate ItemsSource="{Binding Fleets}">
                                     <TextBlock Text="{Binding Path=Name}"/>
                                 </HierarchicalDataTemplate>
                             </HierarchicalDataTemplate.ItemTemplate>

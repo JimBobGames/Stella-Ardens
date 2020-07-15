@@ -40,6 +40,8 @@ namespace StellaArdens.Core.Data
 
         public int TurnNumber { get; set; }
 
+        public Player Player { get; set; }
+
         /// <summary>
         /// The galactic map
         /// </summary>
@@ -53,34 +55,30 @@ namespace StellaArdens.Core.Data
             }
         }
 
-        internal void AddNation(Nation nation)
-        {
-            Nations[nation.Id] = nation;
-        }
 
         /// <summary>
         /// The store of nations
         /// </summary>
         [JsonProperty]
-        private Dictionary<int, Nation> nations = new Dictionary<int, Nation>();
+        private readonly Dictionary<int, Nation> nations = new Dictionary<int, Nation>();
 
         /// <summary>
         /// The store of fleets
         /// </summary>
         [JsonProperty]
-        private Dictionary<int, Fleet> fleets = new Dictionary<int, Fleet>();
+        private readonly Dictionary<int, Fleet> fleets = new Dictionary<int, Fleet>();
 
         /// <summary>
         /// The store of task forces
         /// </summary>
         [JsonProperty]
-        private Dictionary<int, TaskForce> taskForces = new Dictionary<int, TaskForce>();
+        private readonly Dictionary<int, TaskForce> taskForces = new Dictionary<int, TaskForce>();
 
         /// <summary>
         /// The store of divisions
         /// </summary>
         [JsonProperty]
-        private Dictionary<int, Division> divisions = new Dictionary<int, Division>();
+        private readonly Dictionary<int, Division> divisions = new Dictionary<int, Division>();
 
         /// <summary>
         /// The store of ships
@@ -231,6 +229,13 @@ namespace StellaArdens.Core.Data
             Fleets.TryGetValue(id, out Fleet value);
             return value;
         }
+
+        public SolarSystem GetSolarSystem(int id)
+        {
+            map.SolarSystems.TryGetValue(id, out SolarSystem value);
+            return value;
+        }
+
         public TaskForce GetTaskForce(int id)
         {
             TaskForces.TryGetValue(id, out TaskForce value);
@@ -246,5 +251,58 @@ namespace StellaArdens.Core.Data
             Ships.TryGetValue(id, out Ship value);
             return value;
         }
+
+        public Fleet AddFleet(Fleet fleet)
+        {
+            if (fleet != null && fleet.Nation != null || fleet.HomeBase !=null)
+            {
+                fleets[fleet.FleetId] = fleet;
+                fleet.Nation.Fleets.Add(fleet);
+                fleet.HomeBase.Fleets.Add(fleet);
+            }
+
+            return fleet;
+        }
+
+        public TaskForce AddTaskForce(TaskForce taskForce)
+        {
+            if (taskForce != null && taskForce.Fleet != null)
+            {
+                taskForces[taskForce.TaskForceId] = taskForce;
+                taskForce.Fleet.TaskForces.Add(taskForce);
+            }
+
+            return taskForce;
+        }
+
+
+        public SolarSystem AddSolarSystem(SolarSystem solarSystem)
+        {
+            if (solarSystem != null)
+            {
+                map.SolarSystems[solarSystem.SolarSystemId] = solarSystem;
+            }
+
+            return solarSystem;
+        }
+
+        public SolarSystemObject AddSolarSystemObject(SolarSystemObject obj)
+        {
+            if (obj != null || obj.SolarSystem != null)
+            {
+                map.SolarSystemObjects[obj.SolarSystemObjectId] = obj;
+                obj.SolarSystem.SolarSystemObjects.Add(obj);
+            }
+
+            return obj;
+        }
+
+        public Nation AddNation(Nation nation)
+        {
+            Nations[nation.Id] = nation;
+
+            return nation;
+        }
+
     }
 }

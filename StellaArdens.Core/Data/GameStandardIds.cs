@@ -8,6 +8,9 @@
         public const int TERRAN_DESTROYER_DESIGNID = 100;
         public const int ORION_DESTROYER_DESIGNID = 110;
 
-
+        public const int SOL_SOLARSYSTEMID = 1;
+        public const int SOL_EARTHID = 1;
+        public const int SOL_MARSID = 1;
+        public const int SOL_TERRANSHIPYARDID = 1;
     }
 }

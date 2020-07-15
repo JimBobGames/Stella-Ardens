@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections.ObjectModel;
+using StellaArdens.Core.Util;
 
 namespace StellaArdens.Core.Data
 {
@@ -15,5 +16,9 @@ namespace StellaArdens.Core.Data
         /// </summary>
         public Point Location { get; set; }
         public int SolarSystemId { get; set; }
+
+        public SortedObservableCollection<SolarSystemObject> SolarSystemObjects { get { return solarSystemObjectList; } }
+
+        public SortedObservableCollection<SolarSystemObject> solarSystemObjectList = new SortedObservableCollection<SolarSystemObject>();
     }
 }

@@ -54,7 +54,8 @@ namespace StellaArdens
 
      public partial class MainWindow : Window
      {
-         private StateList states = new StateList();
+        private StellaArdensGame game = null;
+        private StateList states = new StateList();
 
  
 
@@ -64,9 +65,11 @@ namespace StellaArdens
 
              InitializeComponent();
 
-  
+            game = GameLoader.CreateGame();
 
-             CountyList countyList1 = new CountyList();
+
+
+            CountyList countyList1 = new CountyList();
 
               County county1 = new County();
 
@@ -138,7 +141,7 @@ namespace StellaArdens
 
  
 
-             DataContext = states;
+             DataContext = game.Player.Nation.KnownSolarSystems;
 
          }
 

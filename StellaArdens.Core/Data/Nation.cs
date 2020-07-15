@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using StellaArdens.Core.Util;
 
 namespace StellaArdens.Core.Data
 {
@@ -18,5 +19,25 @@ namespace StellaArdens.Core.Data
         public int Income { get; set; }
 
         public StratgicPriorities StratgicPriorities { get; set; }
+
+        private SortedObservableCollection<Fleet> fleets = new SortedObservableCollection<Fleet>();
+
+        public SortedObservableCollection<Fleet> Fleets
+        {
+            get
+            {
+                return fleets;
+            }
+        }
+
+        private SortedObservableCollection<SolarSystem> knownSolarSystemsList = new SortedObservableCollection<SolarSystem>();
+
+        public SortedObservableCollection<SolarSystem> KnownSolarSystems
+        {
+            get
+            {
+                return knownSolarSystemsList;
+            }
+        }
     }
 }

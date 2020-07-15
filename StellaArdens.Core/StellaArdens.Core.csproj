@@ -58,6 +58,7 @@
     <Compile Include="Data\Nation.cs" />
     <Compile Include="Data\Operation.cs" />
     <Compile Include="Data\Planet.cs" />
+    <Compile Include="Data\Player.cs" />
     <Compile Include="Data\Ship.cs" />
     <Compile Include="Data\SolarSystem.cs" />
     <Compile Include="Data\SolarSystemObject.cs" />
