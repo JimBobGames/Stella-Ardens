@@ -25,7 +25,26 @@ namespace StellaArdens
             InitializeComponent();
 
             Division d1 = new Division() { Name = "Division1" };
-            StackPanel1.Children.Add(new UI.BattleUserControl() { DataContext = d1 });
+            Ship s1 = new Ship() { Name = "Ship 1" };
+            Ship s2 = new Ship() { Name = "Ship 2" };
+            d1.Ships.Add(s1);
+            d1.Ships.Add(s2);
+
+            UI.BattleUserControl bc = new UI.BattleUserControl();
+            bc.DataContext = d1;
+
+            UI.ShipBattleUserControl sbuc1 = new UI.ShipBattleUserControl();
+            sbuc1.DataContext = s1;
+
+            UI.ShipBattleUserControl sbuc2 = new UI.ShipBattleUserControl();
+            sbuc2.DataContext = s2;
+
+            bc.ShipsStackPanel.Children.Add(sbuc1);
+            bc.ShipsStackPanel.Children.Add(sbuc2);
+
+            StackPanel1.Children.Add(bc);
+
+            //this.UpdateLayout();
         }
     }
 }

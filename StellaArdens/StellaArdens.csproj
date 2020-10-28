@@ -64,6 +64,9 @@
       <DependentUpon>BattleUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\EventHandlerExtensions.cs" />
+    <Compile Include="UI\ShipBattleUserControl.xaml.cs">
+      <DependentUpon>ShipBattleUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="BattleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +84,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\BattleUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\ShipBattleUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

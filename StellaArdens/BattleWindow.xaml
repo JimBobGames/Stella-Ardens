@@ -15,8 +15,6 @@
         <Button Content="Dock=Right" DockPanel.Dock="Right"/>
             <ScrollViewer >
                 <StackPanel x:Name="StackPanel1">
-                    <uc:BattleUserControl  Height="50" />
-                    <uc:BattleUserControl  Height="100" />
                     <Button Content="First Item" />
                     <Button Content="Second Item" />
                     <Button Content="Third Item" />
