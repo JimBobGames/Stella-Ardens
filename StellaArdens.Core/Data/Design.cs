@@ -57,5 +57,21 @@ namespace StellaArdens.Core.Data
                 return 4;
             }
         }
+
+        // each design can have one type of shields
+        public Shield Shield { get; set; }
+        public int NumberOfShieldGenerators { get; set; }
+        public int MaximumShieldPoints { get; set; }
+
+        // each design can have one type of armour
+        public Armour Armour { get; set; }
+        public int NumberOfArmourLayers { get; set; }
+        public int MaximumArmourPoints { get; set; }
+
+        // each design can have one type of engine
+        public Engine Engine { get; set; }
+        public int NumberOfEngines { get; set; }
+        public int MaximumEnginePoints { get; set; }
+
     }
 }

@@ -13,7 +13,7 @@ namespace StellaArdens.Core.Persistence
             {
                 TurnNumber = 0
             };
-            ReferenceDataLoader.LoadGunData(game);
+            ReferenceDataLoader.LoadReferenceData(game);
             CreateMap(game, 10);
             CreateNations(game);
             CreateDesigns(game);

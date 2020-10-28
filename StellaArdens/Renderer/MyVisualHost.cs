@@ -1,6 +1,7 @@
 ﻿using StellaArdens.Core.Data;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,60 @@ namespace StellaArdens.Renderer
 
             // Add the event handler for MouseLeftButtonUp.
             //this.MouseLeftButtonUp += new System.Windows.Input.MouseButtonEventHandler(MyVisualHost_MouseLeftButtonUp);
+     
+                
         }
+
+        class Battalion
+        {
+            public string ShortName { get; internal set; }
+
+            internal int GetWidthInPaces()
+            {
+                return 100;
+            }
+
+            internal int GetDepthInPaces()
+            {
+                return 15;
+            }
+        }
+
+        private void DrawRegiment(DrawingContext dc, int x, int y, int angle, Battalion bn)
+        {
+            int width = bn.GetWidthInPaces();
+            int halfwidth = width / 2;
+            int height = bn.GetDepthInPaces();
+
+            dc.PushTransform(new RotateTransform(angle, x + halfwidth, y));
+
+            // Create a rectangle and draw it in the DrawingContext.
+            Rect rect = new Rect(new System.Windows.Point(x, y), new System.Windows.Size(width, height));
+            dc.DrawRectangle(System.Windows.Media.Brushes.Blue, (System.Windows.Media.Pen)null, rect);
+
+            //Rect rect2 = new Rect(new System.Windows.Point(x, y + height), new System.Windows.Size(width, 10));
+            //dc.DrawRectangle(System.Windows.Media.Brushes.Black, (System.Windows.Media.Pen)null, rect2);
+
+            /*
+            Rect rect3 = new Rect(new System.Windows.Point(x + (halfwidth - widgetsize) //150
+            , y - widgetsize), new System.Windows.Size(20, 10));
+            dc.DrawRectangle(System.Windows.Media.Brushes.Red, (System.Windows.Media.Pen)null, rect3);
+            */
+            dc.DrawText(
+               
+
+           new FormattedText(bn.ShortName,
+              CultureInfo.GetCultureInfo("en-us"),
+              FlowDirection.LeftToRight,
+              new Typeface("Verdana"),
+              12, System.Windows.Media.Brushes.Black, 1.25d),
+              new System.Windows.Point(x, y + height));
+
+            
+
+            dc.Pop();
+        }
+
 
         private void CreateMapVisuals()
         {
@@ -52,8 +106,13 @@ namespace StellaArdens.Renderer
             // Retrieve the DrawingContext in order to create new drawing content.
             using (DrawingContext dc = drawingVisual.RenderOpen())
             {
-                Rect rect = new Rect(new System.Windows.Point(50, 50), new System.Windows.Size(100, 100));
-                dc.DrawRectangle(System.Windows.Media.Brushes.Blue, (System.Windows.Media.Pen)null, rect);
+                //Rect rect = new Rect(new System.Windows.Point(50, 50), new System.Windows.Size(100, 100));
+                //dc.DrawRectangle(System.Windows.Media.Brushes.Blue, (System.Windows.Media.Pen)null, rect);
+
+
+                DrawRegiment(dc, 20, 20, 45, new Battalion() { ShortName = "1st NY" } );
+                DrawRegiment(dc, 120, 20, 45, new Battalion() { ShortName = "2nd NY" });
+                DrawRegiment(dc, 220, 20, 45, new Battalion() { ShortName = "3rd NY" });
 
             }
 

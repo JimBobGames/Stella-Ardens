@@ -11,7 +11,7 @@ namespace StellaArdens.Core.Data
     /// </summary>
     public class Hull : NamedGameOject
     {
-        public int Id { get; set; }
+        public int HullId { get; set; }
         public DesignSize DesignSize { get; set; }
         public HullSize HullSize { get; set; }
     }

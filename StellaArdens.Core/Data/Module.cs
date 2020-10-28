@@ -24,6 +24,8 @@ namespace StellaArdens.Core.Data
         public int ModuleId { get; set; }
 
         public ModuleSize ModuleSize { get; set; }
+
+        public int Cost { get; set; }
     }
 
 
@@ -32,10 +34,22 @@ namespace StellaArdens.Core.Data
     }
     public class Shield : Module
     {
+        public int AdjustDamage(Weapon w, int amount)
+        {
+            return 0;
+        }
+    }
+    public class Armour : Module
+    {
+        public int AdjustDamage(Weapon w, int amount)
+        {
+            return 0;
+        }
     }
 
     public class Engine : Module
     {
+        //public EngineType EngineType { get; set; }
     }
 
 }

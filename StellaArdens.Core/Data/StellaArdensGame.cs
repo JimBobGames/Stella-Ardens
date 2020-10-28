@@ -57,6 +57,18 @@ namespace StellaArdens.Core.Data
 
 
         /// <summary>
+        /// The store of shields
+        /// </summary>
+        //[JsonProperty]
+        private readonly Dictionary<int, Shield> shields = new Dictionary<int, Shield>();
+
+        /// <summary>
+        /// The store of armour
+        /// </summary>
+        //[JsonProperty]
+        private readonly Dictionary<int, Armour> armour = new Dictionary<int, Armour>();
+
+        /// <summary>
         /// The store of nations
         /// </summary>
         [JsonProperty]
@@ -264,6 +276,25 @@ namespace StellaArdens.Core.Data
             return fleet;
         }
 
+        public Shield AddShield(Shield shield)
+        {
+            if (shield != null)
+            {
+                shields[shield.ModuleId] = shield;
+            }
+
+            return shield;
+        }
+        public Armour AddArmour(Armour a)
+        {
+            if (a != null)
+            {
+                armour[a.ModuleId] = a;
+            }
+
+            return a;
+        }
+
         public TaskForce AddTaskForce(TaskForce taskForce)
         {
             if (taskForce != null && taskForce.Fleet != null)
@@ -304,5 +335,11 @@ namespace StellaArdens.Core.Data
             return nation;
         }
 
+        internal Hull AddHull(Hull h)
+        {
+            Hulls[h.HullId] = h;
+
+            return h;
+        }
     }
 }

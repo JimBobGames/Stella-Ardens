@@ -24,25 +24,27 @@ namespace StellaArdens
     /// </summary
     /// >
 
-    public partial class MainWindow2 : Window
+    public partial class MainWindow : Window
     {
         private StellaArdensGame game = null;
 
-        public MainWindow2()
+        public MainWindow()
         {
             InitializeComponent();
 
             game = GameLoader.CreateGame();
 
             MapVisualHost mvh = new MapVisualHost(game);
-            //this.MainWindowCanvas.Children.Add(mvh);
-            //this.MainWindowCanvas.InvalidateVisual();
+            this.MainWindowCanvas.Children.Add(mvh);
+            this.MainWindowCanvas.InvalidateVisual();
+
+           
         }
 
-        private void InitializeComponent()
-        {
+        //private void InitializeComponent()
+       // {
             //throw new NotImplementedException();
-        }
+        //}
     }
 
 
@@ -52,18 +54,18 @@ namespace StellaArdens
     /// Interaction logic for Window1.xaml
 /// </summary>
 
-     public partial class MainWindow : Window
+     public partial class MainWindow2 : Window
      {
         private StellaArdensGame game = null;
         private StateList states = new StateList();
 
  
 
-        public MainWindow()
+        public MainWindow2()
 
         {
 
-             InitializeComponent();
+             //InitializeComponent();
 
             game = GameLoader.CreateGame();
 
