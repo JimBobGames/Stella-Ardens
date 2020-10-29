@@ -44,10 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Battle.cs" />
     <Compile Include="Data\Design.cs" />
     <Compile Include="Data\Division.cs" />
     <Compile Include="Data\Fleet.cs" />
     <Compile Include="Data\GalacticMap.cs" />
+    <Compile Include="Data\GameCreator.cs" />
     <Compile Include="Data\GameEvent.cs" />
     <Compile Include="Data\GameEventLog.cs" />
     <Compile Include="Data\GameStandardIds.cs" />

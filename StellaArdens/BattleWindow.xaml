@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="BattleWindow" Height="450" Width="800" Background="Beige" WindowStartupLocation="CenterScreen" WindowState="Maximized">
 
-    <DockPanel LastChildFill="True">
+    <DockPanel LastChildFill="True"  Name="BattleDockPanel">
         <Button Content="Dock=Top" DockPanel.Dock="Top"/>
         <Button Content="Dock=Bottom" DockPanel.Dock="Bottom"/>
         <Button Content="Dock=Left"/>
