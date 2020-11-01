@@ -10,9 +10,7 @@ using MBCR = StellaArdens.Core.Reference;
 namespace StellaArdens.Core.Persistence
 {
     /// <summary>
-    /// Gun data sources
     /// 
-    /// http://www.navweaps.com/index_nathan/Penetration_Germany.php
     /// </summary>
     public class ReferenceDataLoader
     {
@@ -35,6 +33,11 @@ namespace StellaArdens.Core.Persistence
             //CreateHull(StandardIds.ID_HULL_LIGHT_CRUISER, "CL", "Light Cruiser", HullClass.Crusier, 2100, 3000, 4000, 3, 100, 7);
 
             // load engines
+            /// the module size represents an engine room so essentially the number of engine rooms per ship
+            ///
+            game.AddEngine(new Engine() { ModuleId = GameStandardIds.ID_NO_ENGINE, Name = "No Engine", ModuleSize = ModuleSize.NoModule });
+            game.AddEngine(new Engine() { ModuleId = GameStandardIds.ID_ENGINE_BASIC_MILITARY_SMALL, Name = "Small Basic Military Engine", ModuleSize = ModuleSize.Small });
+            game.AddEngine(new Engine() { ModuleId = GameStandardIds.ID_ENGINE_BASIC_MILITARY_MEDIUM, Name = "Medium Basic Military Engine", ModuleSize = ModuleSize.Medium });
             /*
             engines[1] = new Engine()
             {

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Width="120">
     <DockPanel LastChildFill="True" Background="Aquamarine">
-        <Label Content="{Binding Name}" DockPanel.Dock="Top"/>
+        <Label Content="{Binding DetailedName}" DockPanel.Dock="Top"/>
         <Label Content="Wibble" DockPanel.Dock="Top"/>
     </DockPanel>
 </UserControl>

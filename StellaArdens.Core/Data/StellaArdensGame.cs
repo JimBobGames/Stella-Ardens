@@ -57,6 +57,12 @@ namespace StellaArdens.Core.Data
 
 
         /// <summary>
+        /// The store of engines
+        /// </summary>
+        //[JsonProperty]
+        private readonly Dictionary<int, Engine> engines = new Dictionary<int, Engine>();
+
+        /// <summary>
         /// The store of shields
         /// </summary>
         //[JsonProperty]
@@ -100,6 +106,11 @@ namespace StellaArdens.Core.Data
         internal void AddDesign(Design design)
         {
             Designs[design.DesignId] = design;
+        }
+
+        internal void AddEngine(Engine engine)
+        {
+            Engines[engine.ModuleId] = engine;
         }
 
         /// <summary>
@@ -173,6 +184,13 @@ namespace StellaArdens.Core.Data
                 return designs;
             }
         }
+        public Dictionary<int, Engine> Engines
+        {
+            get
+            {
+                return engines;
+            }
+        }
 
         public IReadOnlyList<Nation> NationsListUnsorted => nations.Values.ToList();
         public IReadOnlyList<Nation> NationsListAlphabetical => new List<Nation>(nations.Values.ToList()).OrderBy(o => o.Name).ToList();
@@ -195,6 +213,14 @@ namespace StellaArdens.Core.Data
         public Hull GetHull(int id)
         {
             Hulls.TryGetValue(id, out Hull value);
+            return value;
+        }
+
+        public IReadOnlyList<Engine> EnginesListUnsorted => engines.Values.ToList();
+        public IReadOnlyList<Engine> EnginesListAlphabetical => new List<Engine>(engines.Values.ToList()).OrderBy(o => o.Name).ToList();
+        public Engine GetEngine(int id)
+        {
+            Engines.TryGetValue(id, out Engine value);
             return value;
         }
 

@@ -79,8 +79,25 @@ namespace StellaArdens.Core.Persistence
 
         private static void CreateDesigns(StellaArdensGame game)
         {
+            Hull escortHull = game.GetHull(GameStandardIds.ID_HULL_ESCORT);
+            Engine militaryEngine = game.GetEngine(GameStandardIds.ID_ENGINE_BASIC_MILITARY);
+
+            game.AddDesign(CreateDesign(GameStandardIds.TERRAN_ESCORT_DESIGNID, "Terran Escort", escortHull, militaryEngine));
+            //g.CreateDesign(TERRAN_DESTROYER_DESIGNID, "Terran Destroyer", 4);
             //g.CreateDesign(TERRAN_DESTROYER_DESIGNID, "Terran Destroyer", 4);
             //g.CreateDesign(ORION_DESTROYER_DESIGNID, "Orion Destroyer", 4);
+        }
+
+        private static Design CreateDesign(int id, string name, Hull h, Engine e)
+        {
+            Design d = new Design();
+            d.Name = name;
+            d.DesignId = id;
+            d.Hull = h;
+            d.Engine = e;
+
+
+            return d;
         }
     }
 }

@@ -23,6 +23,8 @@ namespace StellaArdens.Core.Data
         /// </summary>
         public Design Design { get; set; }
 
+        public string DetailedName { get { return "FF " + Name;  } }
+
         public Shield Shield
         {
             get { return Design.Shield; }
