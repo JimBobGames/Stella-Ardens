@@ -14,5 +14,7 @@ namespace StellaArdens.Core.Data
         public int HullId { get; set; }
         public DesignSize DesignSize { get; set; }
         public HullSize HullSize { get; set; }
+        public int MinSize { get; set; }
+        public int MaxSize { get; set; }
     }
 }

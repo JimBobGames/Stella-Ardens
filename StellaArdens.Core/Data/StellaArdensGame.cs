@@ -191,6 +191,20 @@ namespace StellaArdens.Core.Data
                 return engines;
             }
         }
+        public Dictionary<int, Shield> Shields
+        {
+            get
+            {
+                return shields;
+            }
+        }
+        public Dictionary<int, Armour> Armour
+        {
+            get
+            {
+                return armour;
+            }
+        }
 
         public IReadOnlyList<Nation> NationsListUnsorted => nations.Values.ToList();
         public IReadOnlyList<Nation> NationsListAlphabetical => new List<Nation>(nations.Values.ToList()).OrderBy(o => o.Name).ToList();
@@ -221,6 +235,22 @@ namespace StellaArdens.Core.Data
         public Engine GetEngine(int id)
         {
             Engines.TryGetValue(id, out Engine value);
+            return value;
+        }
+
+        public IReadOnlyList<Shield> ShieldsListUnsorted => shields.Values.ToList();
+        public IReadOnlyList<Shield> ShieldsListAlphabetical => new List<Shield>(shields.Values.ToList()).OrderBy(o => o.Name).ToList();
+        public Shield GetShield(int id)
+        {
+            Shields.TryGetValue(id, out Shield value);
+            return value;
+        }
+
+        public IReadOnlyList<Armour> ArmourListUnsorted => armour.Values.ToList();
+        public IReadOnlyList<Armour> ArmourListAlphabetical => new List<Armour>(armour.Values.ToList()).OrderBy(o => o.Name).ToList();
+        public Armour GetArmour(int id)
+        {
+            Armour.TryGetValue(id, out Armour value);
             return value;
         }
 

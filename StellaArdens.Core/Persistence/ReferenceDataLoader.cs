@@ -19,11 +19,11 @@ namespace StellaArdens.Core.Persistence
             // move this to seperate JSON files later
 
             // loads hulls
-            game.AddHull(new Hull() { HullId = GameStandardIds.ID_HULL_ESCORT,Name = "Escort", HullSize = HullSize.Escort, DesignSize = DesignSize.Escort });
-            game.AddHull(new Hull() { HullId = GameStandardIds.ID_HULL_CORVETTE, Name = "Escort", HullSize = HullSize.Corvette, DesignSize = DesignSize.Escort });
-            game.AddHull(new Hull() { HullId = GameStandardIds.ID_HULL_FRIGATE, Name = "Escort", HullSize = HullSize.Frigate, DesignSize = DesignSize.Escort });
-            game.AddHull(new Hull() { HullId = GameStandardIds.ID_HULL_DESTROYER, Name = "Escort", HullSize = HullSize.Destroyer, DesignSize = DesignSize.Escort });
-            game.AddHull(new Hull() { HullId = GameStandardIds.ID_HULL_LIGHT_CRUISER, Name = "Escort", HullSize = HullSize.LightCruiser, DesignSize = DesignSize.Escort });
+            game.AddHull(new Hull() { HullId = GameStandardIds.ID_HULL_ESCORT,Name = "Escort", HullSize = HullSize.Escort, DesignSize = DesignSize.Escort, MinSize = 8, MaxSize = 12 });
+            game.AddHull(new Hull() { HullId = GameStandardIds.ID_HULL_CORVETTE, Name = "Escort", HullSize = HullSize.Corvette, DesignSize = DesignSize.Escort, MinSize = 13, MaxSize = 16 });
+            game.AddHull(new Hull() { HullId = GameStandardIds.ID_HULL_FRIGATE, Name = "Escort", HullSize = HullSize.Frigate, DesignSize = DesignSize.Escort, MinSize = 17, MaxSize = 20 });
+            game.AddHull(new Hull() { HullId = GameStandardIds.ID_HULL_DESTROYER, Name = "Escort", HullSize = HullSize.Destroyer, DesignSize = DesignSize.Escort, MinSize = 21, MaxSize = 30 });
+            //game.AddHull(new Hull() { HullId = GameStandardIds.ID_HULL_LIGHT_CRUISER, Name = "Escort", HullSize = HullSize.LightCruiser, DesignSize = DesignSize.Escort });
 
 
             //CreateHull(StandardIds.ID_HULL_ESCORT, "ES", "Escort", HullClass.Escort, 800, 1200, 2000, 2, 34, 8);
@@ -37,7 +37,7 @@ namespace StellaArdens.Core.Persistence
             ///
             game.AddEngine(new Engine() { ModuleId = GameStandardIds.ID_NO_ENGINE, Name = "No Engine", ModuleSize = ModuleSize.NoModule });
             game.AddEngine(new Engine() { ModuleId = GameStandardIds.ID_ENGINE_BASIC_MILITARY_SMALL, Name = "Small Basic Military Engine", ModuleSize = ModuleSize.Small });
-            game.AddEngine(new Engine() { ModuleId = GameStandardIds.ID_ENGINE_BASIC_MILITARY_MEDIUM, Name = "Medium Basic Military Engine", ModuleSize = ModuleSize.Medium });
+            game.AddEngine(new Engine() { ModuleId = GameStandardIds.ID_ENGINE_BASIC_CIVILLIAN_SMALL, Name = "Small Basic Military Engine", ModuleSize = ModuleSize.Medium });
             /*
             engines[1] = new Engine()
             {

@@ -9,10 +9,10 @@ namespace StellaArdens.Core.Data
     public enum DesignSize
     {
         NoSize = 0,
-        Escort = 1, // escorts
-        Cruiser = 2, // cruisers
-        Battleship = 3, // battleships
-        Dreadnought = 4, // dreadnoughts
+        Escort = 1, // escorts SMALL
+        Cruiser = 2, // cruisers MEDIUM
+        Battleship = 3, // battleships LARGE
+        Dreadnought = 4, // dreadnoughts HUDE
         Starbase = 5, // starbase
     }
 
