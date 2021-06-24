@@ -31,6 +31,53 @@ namespace StellaArdens.Core.Engines
             // resolving survey for race
             Game.GameEventLog.AddEvent(Game.TurnNumber, GameEventCategory.InformationEvent, GameEventType.SurveyExplorationUpdateEvent, n.Id, sp.Value, moneyAvailable);
 
+            // how many Unexplored warp lines do we know of ?
+            List<WarpLine> unexploredWarpLines = GetUnexploredWarpLines(n);
+
+            // filter any unallocated by 'importance' and access
+            List<WarpLine> unallocatedWarpLines = GetUnallocatedWarpLines(n, unexploredWarpLines);
+
+            // allocated available survey fleets
+            AllocateSurveyFleets(n, unallocatedWarpLines);
+
         }
+
+        public void AllocateSurveyFleets(Nation n, List<WarpLine> unallocatedWarpLines)
+        {
+            // get the idle survey fleets
+
+
+            // allocate to the warp lines
+
+        }
+
+        public List<WarpLine> GetUnallocatedWarpLines(Nation n, List<WarpLine> unexploredWarpLines)
+        {
+            // is this 'accessable' ?
+
+
+            // has a survey fleet been allocated?
+
+            // sort by importance
+
+            return new List<WarpLine>();
+        }
+
+        public List<WarpLine> GetUnexploredWarpLines(Nation n)
+        {
+            // for all 'known' systems
+            foreach (SolarSystem ss in n.KnownSolarSystems)
+            {
+                // is this system explored ??
+                if (ss.IsExplored(n))
+                {
+
+                }
+            }
+
+            return new List<WarpLine>();
+        }
+
+
     }
 }
