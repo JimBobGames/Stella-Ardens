@@ -57,6 +57,28 @@
                 </DataGrid>
             </TabItem>
             <TabItem Header="Survey" >
+                <DockPanel LastChildFill="True"  Name="SurveyDockPanel">
+                    <Button Content="Dock=Top" DockPanel.Dock="Top"/>
+                    <Button Content="Dock=Bottom" DockPanel.Dock="Bottom"/>
+                    <Button Content="Dock=Left"/>
+                    <Button Content="Dock=Right" DockPanel.Dock="Right"/>
+                    <ScrollViewer >
+                        <StackPanel x:Name="StackPanel1">
+                            <Button Content="First Item" />
+                            <DataGrid Name="SurveyTargetsDataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
+                                    <DataGridTextColumn Header="Command" Binding="{Binding FleetAllocation}" />
+                                    <!--The Email property contains a URI.  For example "mailto:lucy0@adventure-works.com"-->
+                                    <DataGridHyperlinkColumn Header="Email" Binding="{Binding Email}"   />
+                                    <DataGridCheckBoxColumn Header="Member?" Binding="{Binding IsMember}" />
+                                    <DataGridComboBoxColumn Header="Order Status"  SelectedItemBinding="{Binding Status}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Button Content="Third Item" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </DockPanel>
             </TabItem>
         </TabControl>
     </DockPanel>
