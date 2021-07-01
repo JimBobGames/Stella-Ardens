@@ -8,6 +8,16 @@ using StellaArdens.Core.Util;
 
 namespace StellaArdens.Core.Data
 {
+    public enum FleetAllocation
+    {
+        Unallocated = 0,
+        Survey,
+        Defence,
+        Offence,
+        Trade
+    }
+
+
     public class Fleet : NamedGameOject
     {
         private SortedObservableCollection<TaskForce> taskForcesList = new SortedObservableCollection<TaskForce>();
@@ -21,6 +31,12 @@ namespace StellaArdens.Core.Data
 
         public Starbase HomeBase { get; set; }
         public Nation Nation { get; set; }
+
+        public FleetAllocation FleetAllocation { get; set; }
+
+
     }
+
+ 
 
 }

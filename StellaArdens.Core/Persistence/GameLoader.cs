@@ -28,9 +28,10 @@ namespace StellaArdens.Core.Persistence
             Nation terrans = game.GetNation(1);
             Starbase terranShipyard = (Starbase) game.GalacticMap.GetSolarSystemObject(GameStandardIds.SOL_TERRANSHIPYARDID);
 
-            Fleet f1 = game.AddFleet(new Fleet() { FleetId = 1, Name = "Beta Fleet", Nation = terrans, HomeBase = terranShipyard });
-            Fleet f2 = game.AddFleet(new Fleet() { FleetId = 2, Name = "Attack Fleet", Nation = terrans, HomeBase = terranShipyard });
-            Fleet f3 = game.AddFleet(new Fleet() { FleetId = 3, Name = "Zeta Fleet", Nation = terrans, HomeBase = terranShipyard });
+            Fleet f1 = game.AddFleet(new Fleet() { FleetId = 1, Name = "Beta Fleet", Nation = terrans, HomeBase = terranShipyard, FleetAllocation = FleetAllocation.Unallocated });
+            Fleet f2 = game.AddFleet(new Fleet() { FleetId = 2, Name = "Attack Fleet", Nation = terrans, HomeBase = terranShipyard, FleetAllocation = FleetAllocation.Unallocated });
+            Fleet f3 = game.AddFleet(new Fleet() { FleetId = 3, Name = "Zeta Fleet", Nation = terrans, HomeBase = terranShipyard, FleetAllocation = FleetAllocation.Unallocated });
+            Fleet f4 = game.AddFleet(new Fleet() { FleetId = 4, Name = "Survey Fleet", Nation = terrans, HomeBase = terranShipyard, FleetAllocation = FleetAllocation.SurveyCommand });
 
             TaskForce tf1 = game.AddTaskForce( new TaskForce() {TaskForceId = 11, Name = "Task Foce Victor", Fleet = f1 });
             TaskForce tf2 = game.AddTaskForce(new TaskForce() { TaskForceId = 12, Name = "Task Foce Able", Fleet = f1 });

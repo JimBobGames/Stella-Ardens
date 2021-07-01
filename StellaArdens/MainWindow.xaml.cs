@@ -27,6 +27,7 @@ namespace StellaArdens
     public partial class MainWindow : Window
     {
         private StellaArdensGame game = null;
+        private int PlayerNationId = 1;
 
         public MainWindow()
         {
@@ -34,11 +35,15 @@ namespace StellaArdens
 
             game = GameLoader.CreateGame();
 
-            MapVisualHost mvh = new MapVisualHost(game);
-            this.MainWindowCanvas.Children.Add(mvh);
-            this.MainWindowCanvas.InvalidateVisual();
 
-           
+            this.FleetDataGrid.DataContext = game.GetNation(PlayerNationId).Fleets;
+//            this.FleetDataGrid.DataContext = game.FleetListUnsorted;
+
+            ///MapVisualHost mvh = new MapVisualHost(game);
+            ///this.MainWindowCanvas.Children.Add(mvh);
+            ///this.MainWindowCanvas.InvalidateVisual();
+
+
         }
 
         //private void InitializeComponent()

@@ -40,7 +40,25 @@
             </ToolBar>
         </ToolBarTray>
         <Button DockPanel.Dock="Bottom">Bottom</Button>
-        <Canvas x:Name="MainWindowCanvas" Background="Red"></Canvas>
+        <TabControl TabStripPlacement="Top">
+            <TabItem Header="General">
+                <Canvas x:Name="MainWindowCanvas" Background="Red"></Canvas>
+            </TabItem>
+            <TabItem Header="Fleets" >
+                <DataGrid Name="FleetDataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Command" Binding="{Binding FleetAllocation}" />
+                        <!--The Email property contains a URI.  For example "mailto:lucy0@adventure-works.com"-->
+                        <DataGridHyperlinkColumn Header="Email" Binding="{Binding Email}"   />
+                        <DataGridCheckBoxColumn Header="Member?" Binding="{Binding IsMember}" />
+                        <DataGridComboBoxColumn Header="Order Status"  SelectedItemBinding="{Binding Status}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Survey" >
+            </TabItem>
+        </TabControl>
     </DockPanel>
 </Window>
 

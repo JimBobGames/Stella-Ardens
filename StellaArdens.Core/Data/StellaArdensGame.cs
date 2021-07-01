@@ -206,6 +206,8 @@ namespace StellaArdens.Core.Data
             }
         }
 
+        public IReadOnlyList<Fleet> FleetListUnsorted => fleets.Values.ToList();
+
         public IReadOnlyList<Nation> NationsListUnsorted => nations.Values.ToList();
         public IReadOnlyList<Nation> NationsListAlphabetical => new List<Nation>(nations.Values.ToList()).OrderBy(o => o.Name).ToList();
         public IReadOnlyList<Nation> NationsListRandom => new List<Nation>(ListHelper.Randomize(nations.Values.ToList()));

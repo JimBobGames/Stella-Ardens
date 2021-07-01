@@ -56,6 +56,7 @@
     <Compile Include="SimpleTests.cs" />
     <Compile Include="TurnResolutionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SurveyEngineTest.cs" />
     <Compile Include="UnitTestPersistence.cs" />
   </ItemGroup>
   <ItemGroup>
