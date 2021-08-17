@@ -64,7 +64,37 @@ namespace StellaArdens.Core.Persistence
 
             Starbase terranShipyard = (Starbase) game.AddSolarSystemObject(new Starbase() { SolarSystemObjectId = GameStandardIds.SOL_TERRANSHIPYARDID, Name = "Terran Shipyard", SolarSystem = solSystem });
 
+            // create other systems
+            SolarSystem acSystem = CreateSolarSystem(game, "Alpha Centaurii", 100, new Point() { X = 5, Y = 5 });
+
+
+            // create warplines
+            CreateWarpLine(game, 100, solSystem, acSystem, 10, new Point() { X = 5, Y = 5 });
+
+
         }
+
+        private static void CreateWarpLine(StellaArdensGame game, int warpLineId, SolarSystem srcSS, SolarSystem destSS, int size, Point p)
+        {
+            WarpLine src = new WarpLine() 
+            { SolarSystemObjectId = warpLineId, SolarSystem = srcSS, Location = p, Name = destSS.Name + " Warp Line" };
+            game.AddSolarSystemObject(src);
+
+            WarpLine dest = new WarpLine() 
+            { SolarSystemObjectId = warpLineId, SolarSystem = destSS, Location = p, Name = srcSS.Name + " Warp Line" };
+            game.AddSolarSystemObject(dest);
+
+            src.DestinationWarpLine = dest;
+            dest.DestinationWarpLine = src;
+        }
+
+        private static SolarSystem CreateSolarSystem(StellaArdensGame game, string name, int id, Point p)
+        {
+            SolarSystem solarSystem = new SolarSystem() { SolarSystemId = id, Name = name, Location = p };
+            game.AddSolarSystem(solarSystem);
+            return solarSystem;
+        }
+
 
         private static void CreateNations(StellaArdensGame game)
         {

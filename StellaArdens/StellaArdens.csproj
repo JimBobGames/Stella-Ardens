@@ -63,6 +63,7 @@
     <Compile Include="UI\BattleUserControl.xaml.cs">
       <DependentUpon>BattleUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Counter.cs" />
     <Compile Include="UI\EventHandlerExtensions.cs" />
     <Compile Include="UI\ShipBattleUserControl.xaml.cs">
       <DependentUpon>ShipBattleUserControl.xaml</DependentUpon>

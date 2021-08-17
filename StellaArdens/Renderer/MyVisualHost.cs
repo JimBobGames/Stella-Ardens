@@ -1,4 +1,6 @@
 ﻿using StellaArdens.Core.Data;
+using StellaArdens.Core.Hex;
+using StellaArdens.UI;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -7,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using static StellaArdens.Core.Hex.HexMap;
 
 namespace StellaArdens.Renderer
 {
@@ -20,11 +23,15 @@ namespace StellaArdens.Renderer
     {
         private List<Visual> m_Visuals = new List<Visual>();
         private IStellaArdensGame game = null;
+        private HexMap hexMap;
+        private Layout layout;
 
         public MapVisualHost(IStellaArdensGame game)
         {
             this.game = game;
             this.ClipToBounds = false;
+            this.hexMap = HexMap.CreateMap(10, 10);
+            this.layout = new Layout(Layout.flat, new Core.Hex.Point(32,32), new Core.Hex.Point(0,0));
 
             //DrawScreen();
 
@@ -35,8 +42,8 @@ namespace StellaArdens.Renderer
 
             // Add the event handler for MouseLeftButtonUp.
             //this.MouseLeftButtonUp += new System.Windows.Input.MouseButtonEventHandler(MyVisualHost_MouseLeftButtonUp);
-     
-                
+
+
         }
 
         class Battalion
@@ -54,7 +61,57 @@ namespace StellaArdens.Renderer
             }
         }
 
-        private void DrawRegiment(DrawingContext dc, int x, int y, int angle, Battalion bn)
+        private void DrawHexMap(DrawingContext dc, HexMap map)
+        {
+            //OnDrawMapHex del = (MapHex m) => Console.WriteLine("Called lambda expression: " + msg);
+
+
+            map.AllHexesInMapCoords( (MapHex mh) => 
+            {
+                List<Core.Hex.Point> points = layout.PolygonCorners(mh.h);
+                foreach(Core.Hex.Point p in points)
+                {
+                    Rect rect = new Rect(new System.Windows.Point(p.x, p.y), new System.Windows.Size(2, 2));
+                    dc.DrawRectangle(System.Windows.Media.Brushes.Blue, (System.Windows.Media.Pen)null, rect);
+                }
+                // mh.p.
+
+            } );
+        }
+
+        //private void OnDrawMapHex(MapHex mh)
+       // {
+        //}
+
+        private void DrawCounter(DrawingContext dc, Counter c)
+        {
+            int width = 40;
+            int height = 40;
+
+            int x = c.MapLocation.X;
+            int y = c.MapLocation.Y;
+
+           // dc.PushTransform(new RotateTransform(angle, x + halfwidth, y));
+
+            Rect rect = new Rect(new System.Windows.Point(x, y), new System.Windows.Size(width, height));
+            dc.DrawRectangle(System.Windows.Media.Brushes.Blue, (System.Windows.Media.Pen)null, rect);
+
+            dc.DrawText(
+
+
+           new FormattedText(c.Name,
+              CultureInfo.GetCultureInfo("en-us"),
+              FlowDirection.LeftToRight,
+              new Typeface("Verdana"),
+              12, System.Windows.Media.Brushes.Black, 1.25d),
+              new System.Windows.Point(x, y + height));
+
+
+
+          //  dc.Pop();
+        }
+
+            private void DrawRegiment(DrawingContext dc, int x, int y, int angle, Battalion bn)
         {
             int width = bn.GetWidthInPaces();
             int halfwidth = width / 2;
@@ -108,11 +165,20 @@ namespace StellaArdens.Renderer
             {
                 //Rect rect = new Rect(new System.Windows.Point(50, 50), new System.Windows.Size(100, 100));
                 //dc.DrawRectangle(System.Windows.Media.Brushes.Blue, (System.Windows.Media.Pen)null, rect);
+                DrawHexMap(dc, hexMap);
+
 
 
                 DrawRegiment(dc, 20, 20, 45, new Battalion() { ShortName = "1st NY" } );
                 DrawRegiment(dc, 120, 20, 45, new Battalion() { ShortName = "2nd NY" });
                 DrawRegiment(dc, 220, 20, 45, new Battalion() { ShortName = "3rd NY" });
+
+
+                DrawCounter(dc,new Counter() { 
+                    MapLocation = new Core.Data.Point() { X = 50, Y = 50}, 
+                    Brush = System.Windows.Media.Brushes.Green,
+                    MapCounter = new Ship()
+                    { Name = "Flower"} });
 
             }
 

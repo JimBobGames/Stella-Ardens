@@ -54,6 +54,7 @@
     <Compile Include="Data\GameEventLog.cs" />
     <Compile Include="Data\GameStandardIds.cs" />
     <Compile Include="Data\Hull.cs" />
+    <Compile Include="Data\IMapCounter.cs" />
     <Compile Include="Data\IStellaArdensGame.cs" />
     <Compile Include="Data\Module.cs" />
     <Compile Include="Data\NamedGameOject.cs" />
@@ -74,6 +75,8 @@
     <Compile Include="Engines\OperationResolutionEngine.cs" />
     <Compile Include="Engines\SurveyAndExplorationEngine.cs" />
     <Compile Include="Engines\TurnResolutionEngine.cs" />
+    <Compile Include="Hex\Hex.cs" />
+    <Compile Include="Hex\HexMap.cs" />
     <Compile Include="Persistence\GameLoader.cs" />
     <Compile Include="Persistence\ReferenceDataLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

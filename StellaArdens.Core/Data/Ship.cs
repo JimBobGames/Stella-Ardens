@@ -10,7 +10,7 @@ namespace StellaArdens.Core.Data
     /// <summary>
     /// 
     /// </summary>
-    public class Ship : NamedGameOject
+    public class Ship : NamedGameOject, IMapCounter
     {
         public int ShipId { get; set; }
         /// <summary>

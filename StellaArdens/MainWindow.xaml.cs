@@ -36,12 +36,13 @@ namespace StellaArdens
             game = GameLoader.CreateGame();
 
 
-            this.FleetDataGrid.DataContext = game.GetNation(PlayerNationId).Fleets;
+            //this.FleetDataGrid.DataContext = game.GetNation(PlayerNationId).Fleets;
+            //this.SurveyTargetsDataGrid.DataContext = game.GetNation(PlayerNationId).UnknownSolarSystemsList;
 //            this.FleetDataGrid.DataContext = game.FleetListUnsorted;
 
-            ///MapVisualHost mvh = new MapVisualHost(game);
-            ///this.MainWindowCanvas.Children.Add(mvh);
-            ///this.MainWindowCanvas.InvalidateVisual();
+            MapVisualHost mvh = new MapVisualHost(game);
+            this.MainWindowCanvas.Children.Add(mvh);
+            this.MainWindowCanvas.InvalidateVisual();
 
 
         }

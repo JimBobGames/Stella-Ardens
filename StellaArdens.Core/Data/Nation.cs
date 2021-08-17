@@ -39,5 +39,15 @@ namespace StellaArdens.Core.Data
                 return knownSolarSystemsList;
             }
         }
+
+        private SortedObservableCollection<SolarSystem> unknownSolarSystemsList = new SortedObservableCollection<SolarSystem>();
+
+        public SortedObservableCollection<SolarSystem> UnknownSolarSystemsList
+        {
+            get
+            {
+                return unknownSolarSystemsList;
+            }
+        }
     }
 }
