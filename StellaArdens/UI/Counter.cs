@@ -14,7 +14,7 @@ namespace StellaArdens.UI
         /// </summary>
         public IMapCounter MapCounter { get; set; }
 
-        public Point MapLocation { get; set; }
+        public Core.Hex.Point MapLocation { get; set; }
 
         public System.Windows.Media.Brush Brush { get; set; }
 

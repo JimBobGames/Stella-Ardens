@@ -323,6 +323,11 @@ namespace StellaArdens.Core.Hex
             return corners;
         }
 
+        public Point HexCenter(Hex h)
+        {
+            Point center = HexToPixel(h);
+            return center;
+        }
     }
 }
 

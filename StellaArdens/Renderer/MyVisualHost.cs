@@ -75,8 +75,16 @@ namespace StellaArdens.Renderer
                     dc.DrawRectangle(System.Windows.Media.Brushes.Blue, (System.Windows.Media.Pen)null, rect);
                 }
                 // mh.p.
+                Core.Hex.Point p1 = points[5];
+                Core.Hex.Point p2 = points[0];
 
-            } );
+                Core.Hex.Point cn = layout.HexCenter(mh.h);
+
+                Rect rect2 = new Rect(new System.Windows.Point(cn.x, cn.y), new System.Windows.Size(2, 2));
+                dc.DrawRectangle(System.Windows.Media.Brushes.Yellow, (System.Windows.Media.Pen)null, rect2);
+
+
+            });
         }
 
         //private void OnDrawMapHex(MapHex mh)
@@ -88,10 +96,13 @@ namespace StellaArdens.Renderer
             int width = 40;
             int height = 40;
 
-            int x = c.MapLocation.X;
-            int y = c.MapLocation.Y;
+            Hex h = hexMap.GetHex(c.MapLocation);
+            Core.Hex.Point cn = layout.HexCenter(h);
 
-           // dc.PushTransform(new RotateTransform(angle, x + halfwidth, y));
+            int x = (int) cn.x - width / 2;
+            int y = (int) cn.y - height / 2;
+
+            // dc.PushTransform(new RotateTransform(angle, x + halfwidth, y));
 
             Rect rect = new Rect(new System.Windows.Point(x, y), new System.Windows.Size(width, height));
             dc.DrawRectangle(System.Windows.Media.Brushes.Blue, (System.Windows.Media.Pen)null, rect);
@@ -175,7 +186,7 @@ namespace StellaArdens.Renderer
 
 
                 DrawCounter(dc,new Counter() { 
-                    MapLocation = new Core.Data.Point() { X = 50, Y = 50}, 
+                    MapLocation = new Core.Hex.Point(5, 5), 
                     Brush = System.Windows.Media.Brushes.Green,
                     MapCounter = new Ship()
                     { Name = "Flower"} });
