@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// https://www.redblobgames.com/grids/hexagons/
+/// </summary>
 namespace StellaArdens.Core.Hex
 {
     public struct Point
@@ -329,6 +332,8 @@ namespace StellaArdens.Core.Hex
             return center;
         }
     }
+
+    public enum HexFacing { North=0, NorthEast=60, SouthEast=120, South=180, SouthWest=240, NorthWest=300 }
 }
 
 

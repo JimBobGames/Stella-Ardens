@@ -25,13 +25,22 @@ namespace StellaArdens.Renderer
         private IStellaArdensGame game = null;
         private HexMap hexMap;
         private Layout layout;
+        private Pen gridPen;
 
         public MapVisualHost(IStellaArdensGame game)
         {
             this.game = game;
             this.ClipToBounds = false;
-            this.hexMap = HexMap.CreateMap(10, 10);
+            this.hexMap = HexMap.CreateMap(20, 20);
             this.layout = new Layout(Layout.flat, new Core.Hex.Point(32,32), new Core.Hex.Point(0,0));
+
+
+            // Create a Pen to add to the GeometryDrawing created above.
+            gridPen = new Pen();
+            gridPen.Thickness = 1;
+            gridPen.LineJoin = PenLineJoin.Round;
+            gridPen.EndLineCap = PenLineCap.Round;
+            gridPen.Brush = System.Windows.Media.Brushes.White;
 
             //DrawScreen();
 
@@ -69,26 +78,51 @@ namespace StellaArdens.Renderer
             map.AllHexesInMapCoords( (MapHex mh) => 
             {
                 List<Core.Hex.Point> points = layout.PolygonCorners(mh.h);
+
+
+                // draw corners
                 foreach(Core.Hex.Point p in points)
                 {
                     Rect rect = new Rect(new System.Windows.Point(p.x, p.y), new System.Windows.Size(2, 2));
                     dc.DrawRectangle(System.Windows.Media.Brushes.Blue, (System.Windows.Media.Pen)null, rect);
                 }
-                // mh.p.
-                Core.Hex.Point p1 = points[5];
-                Core.Hex.Point p2 = points[0];
 
+                // draw center
                 Core.Hex.Point cn = layout.HexCenter(mh.h);
-
                 Rect rect2 = new Rect(new System.Windows.Point(cn.x, cn.y), new System.Windows.Size(2, 2));
                 dc.DrawRectangle(System.Windows.Media.Brushes.Yellow, (System.Windows.Media.Pen)null, rect2);
 
+                // draw all hex sides
+                if (IsBorderHex(mh))
+                {
+                    for (int i = 0; i < 5; i++)
+                    { 
+                    dc.DrawLine(gridPen,
+                        new System.Windows.Point(points[i].x, points[i].y),
+                        new System.Windows.Point(points[i+1].x, points[i+1].y));
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        dc.DrawLine(gridPen,
+                            new System.Windows.Point(points[i].x, points[i].y),
+                            new System.Windows.Point(points[i + 1].x, points[i + 1].y));
+                    }
+
+                }
 
             });
         }
 
+        private bool IsBorderHex(MapHex mh)
+        {
+            return (mh.h.q == 0) || (mh.h.r == 0);
+        }
+
         //private void OnDrawMapHex(MapHex mh)
-       // {
+        // {
         //}
 
         private void DrawCounter(DrawingContext dc, Counter c)
@@ -96,16 +130,24 @@ namespace StellaArdens.Renderer
             int width = 40;
             int height = 40;
 
+            int halfwidth = width / 2;
+            int halfheight = height / 2;
+
             Hex h = hexMap.GetHex(c.MapLocation);
             Core.Hex.Point cn = layout.HexCenter(h);
+
+            System.Console.WriteLine("Center = " + cn.x + " " + cn.y);
 
             int x = (int) cn.x - width / 2;
             int y = (int) cn.y - height / 2;
 
-            // dc.PushTransform(new RotateTransform(angle, x + halfwidth, y));
+
+            // push the counter angle
+            int angle = ((int)c.MapCounter.HexFacing);
+            dc.PushTransform(new RotateTransform(angle, x + halfwidth, y + halfheight));
 
             Rect rect = new Rect(new System.Windows.Point(x, y), new System.Windows.Size(width, height));
-            dc.DrawRectangle(System.Windows.Media.Brushes.Blue, (System.Windows.Media.Pen)null, rect);
+            dc.DrawRectangle(c.Brush, (System.Windows.Media.Pen)null, rect);
 
             dc.DrawText(
 
@@ -118,8 +160,8 @@ namespace StellaArdens.Renderer
               new System.Windows.Point(x, y + height));
 
 
-
-          //  dc.Pop();
+            // remove the rotation transform
+            dc.Pop();
         }
 
             private void DrawRegiment(DrawingContext dc, int x, int y, int angle, Battalion bn)
@@ -180,16 +222,16 @@ namespace StellaArdens.Renderer
 
 
 
-                DrawRegiment(dc, 20, 20, 45, new Battalion() { ShortName = "1st NY" } );
-                DrawRegiment(dc, 120, 20, 45, new Battalion() { ShortName = "2nd NY" });
-                DrawRegiment(dc, 220, 20, 45, new Battalion() { ShortName = "3rd NY" });
+                //DrawRegiment(dc, 20, 20, 45, new Battalion() { ShortName = "1st NY" } );
+                //DrawRegiment(dc, 120, 20, 45, new Battalion() { ShortName = "2nd NY" });
+                //DrawRegiment(dc, 220, 20, 45, new Battalion() { ShortName = "3rd NY" });
 
 
                 DrawCounter(dc,new Counter() { 
                     MapLocation = new Core.Hex.Point(5, 5), 
                     Brush = System.Windows.Media.Brushes.Green,
                     MapCounter = new Ship()
-                    { Name = "Flower"} });
+                    { Name = "Flower", HexFacing = HexFacing.NorthWest} });
 
             }
 

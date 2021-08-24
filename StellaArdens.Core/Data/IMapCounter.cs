@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StellaArdens.Core.Hex;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,7 @@ namespace StellaArdens.Core.Data
     public interface IMapCounter
     {
         string DetailedName { get; }
+
+        HexFacing HexFacing { get; set; }
     }
 }

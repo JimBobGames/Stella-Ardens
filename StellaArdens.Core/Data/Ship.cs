@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using StellaArdens.Core.Hex;
 
 namespace StellaArdens.Core.Data
 {
@@ -24,6 +25,8 @@ namespace StellaArdens.Core.Data
         public Design Design { get; set; }
 
         public string DetailedName { get { return "FF " + Name;  } }
+
+        public HexFacing HexFacing { get; set; }
 
         public Shield Shield
         {
