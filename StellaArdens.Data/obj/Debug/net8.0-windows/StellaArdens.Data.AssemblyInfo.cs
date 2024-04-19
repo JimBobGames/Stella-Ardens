@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StellaArdens.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1f9389d562c7ed2cd3d7436a669b824112006b1")]
 [assembly: System.Reflection.AssemblyProductAttribute("StellaArdens.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StellaArdens.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
