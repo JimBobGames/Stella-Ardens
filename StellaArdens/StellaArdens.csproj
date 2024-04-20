@@ -8,4 +8,18 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\blue16.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StellaArdens.Data\StellaArdens.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\blue16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

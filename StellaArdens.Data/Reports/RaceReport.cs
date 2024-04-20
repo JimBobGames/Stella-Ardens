@@ -8,5 +8,8 @@ namespace StellaArdens.Data.Reports
 {
     public class RaceReport
     {
+         public required string Name { get; set; }
+         public int TurnNumber { get; set; }
+
     }
 }
