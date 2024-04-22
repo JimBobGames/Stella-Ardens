@@ -1,4 +1,5 @@
 ﻿using StellaArdens.Data.Objects;
+using StellaArdens.Data.Reports;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,10 @@ namespace StellaArdens.Data.Game
     {
         public int TurnNumber { get; set; }
         public Player Player { get; set; }
+        IEnumerable<Race> Races { get; }
+
+        void AddRace(Race terrans);
+
+        Race GetRace(int id);
     }
 }

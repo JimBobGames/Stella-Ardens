@@ -1,4 +1,5 @@
 ﻿using StellaArdens.Data.Game;
+using StellaArdens.Data.Objects;
 using StellaArdens.Data.Reports;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,21 @@ namespace StellaArdens.Data.Engine
             {
                 return;
             }
+
+            // update the game number
             game.TurnNumber++;
 
+            // for each race
+            foreach(Race r in game.Races)
+            {
+                RunTurnForRace(r, game);
+            }
+
+        }
+
+        private void RunTurnForRace(Race r, IStellaArdensGame game)
+        {
+            
         }
 
         public RaceReport GenerateReportForRace(int raceId, IStellaArdensGame game)
