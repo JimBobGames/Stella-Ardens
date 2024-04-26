@@ -17,5 +17,7 @@ namespace StellaArdens.Data.Game
         void AddRace(Race terrans);
 
         Race GetRace(int id);
+
+        GameEventLog GameEventLog { get; }
     }
 }
