@@ -10,6 +10,7 @@ namespace StellaArdens.Data.Reports
     {
          public required string Name { get; set; }
          public int TurnNumber { get; set; }
+        public int Bank { get; set; }
 
     }
 }

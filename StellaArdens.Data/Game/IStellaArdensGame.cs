@@ -13,10 +13,13 @@ namespace StellaArdens.Data.Game
         public int TurnNumber { get; set; }
         public Player Player { get; set; }
         IEnumerable<Race> Races { get; }
+        IEnumerable<SolarSystem> SolarSystems { get; }
 
         void AddRace(Race terrans);
+        void AddSolarSystem(SolarSystem solarSystem);
 
         Race GetRace(int id);
+        SolarSystem GetSolarSystem(int id);
 
         GameEventLog GameEventLog { get; }
     }

@@ -13,6 +13,7 @@ namespace StellaArdens.Data.Engine
     {
         public void RunTurn(IStellaArdensGame? game)
         {
+            this.Game = game;
             if (game == null)
             {
                 return;
@@ -38,7 +39,10 @@ namespace StellaArdens.Data.Engine
         {
             // resolving turn for race
             game.GameEventLog.AddEvent(game.TurnNumber, GameEventCategory.DebugEvent, GameEventType.RacialUpdateEvent, r.RaceId);
-            
+
+            // calaculate income
+            ResolveIncome(r);
+
             // Strategic update - changing priorities
             IReadOnlyList<StratgicPriorities> stratgicPriorities = UpdateStratgicPriorities(game.TurnNumber, r);
 
@@ -75,6 +79,20 @@ namespace StellaArdens.Data.Engine
             // Offensive (planning offensive missions)
 
             // Economic spending
+        }
+
+        private void ResolveIncome(Race r)
+        {
+            // iterate thru all the income generation for this race
+            int TotalIncome = 0;
+
+
+            // stub income of 1000;
+            TotalIncome = 1000;
+
+            r.Bank += TotalIncome;
+            Game.GameEventLog.AddEvent(this.Game.TurnNumber, GameEventCategory.InformationEvent, GameEventType.IncomeUpdateEvent, r.RaceId, TotalIncome, r.Bank);
+
         }
 
         internal void ResolveDefensiveSpending(Race r, StratgicPriorities sp)
@@ -134,10 +152,12 @@ namespace StellaArdens.Data.Engine
 
         public RaceReport GenerateReportForRace(int raceId, IStellaArdensGame game)
         {
-            RaceReport r = new RaceReport() { Name = "Unknown" };
-            r.TurnNumber = game.TurnNumber;
+            Race r = game.GetRace(raceId);
+            RaceReport rr = new RaceReport() { Name = r.Name };
+            rr.TurnNumber = game.TurnNumber;
+            rr.Bank = r.Bank;
 
-            return r;
+            return rr;
         }
     }
 

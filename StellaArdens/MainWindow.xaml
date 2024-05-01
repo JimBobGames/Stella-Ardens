@@ -24,6 +24,12 @@
                 <TextBlock x:Name="RaceName" >
  
                 </TextBlock>
+                </StatusBarItem>
+                <Separator/>
+            <StatusBarItem>
+                <TextBlock x:Name="RaceBank" >
+
+                </TextBlock>
             </StatusBarItem>
             <StatusBarItem HorizontalAlignment="Right">
                 <Button  Width="17" Height="17" Click="EndTurnButton_Click" >

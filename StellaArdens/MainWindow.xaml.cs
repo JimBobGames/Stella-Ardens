@@ -40,6 +40,7 @@ namespace StellaArdens
                 return;
             }
             RaceName.Text = controller.RaceReport.Name + ", Turn " + controller.RaceReport.TurnNumber;
+            RaceBank.Text = controller.RaceReport.Bank + " MCr. " ;
         }
 
         private void EndTurnButton_Click(object sender, RoutedEventArgs e)

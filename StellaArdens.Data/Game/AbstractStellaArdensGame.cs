@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace StellaArdens.Data.Game
 {
+    public struct Point
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+    }
     public static class ListHelper
     {
         ///
@@ -38,9 +43,17 @@ namespace StellaArdens.Data.Game
         /// The store of races
         /// </summary>
         private readonly Dictionary<int, Race> races = new Dictionary<int, Race>();
+        private readonly Dictionary<int, SolarSystem> solarSystems = new Dictionary<int, SolarSystem>();
+
+
         public void AddRace(Race r)
         {
             races[r.RaceId] = r;
+        }
+
+        public void AddSolarSystem(SolarSystem ss)
+        {
+            solarSystems[ss.SolarSystemId] = ss;
         }
 
         public IEnumerable<Race> Races
@@ -50,6 +63,13 @@ namespace StellaArdens.Data.Game
                 return races.Values;
             }
         }
+        public IEnumerable<SolarSystem> SolarSystems
+        {
+            get
+            {
+                return solarSystems.Values;
+            }
+        }
 
         public IReadOnlyList<Race> RacesListUnsorted => races.Values.ToList();
         public IReadOnlyList<Race> RacesListAlphabetical => new List<Race>(races.Values.ToList()).OrderBy(o => o.Name).ToList();
@@ -57,6 +77,11 @@ namespace StellaArdens.Data.Game
         public Race GetRace(int id)
         {
             races.TryGetValue(id, out Race? value);
+            return value;
+        }
+        public SolarSystem GetSolarSystem(int id)
+        {
+            solarSystems.TryGetValue(id, out SolarSystem? value);
             return value;
         }
     }
