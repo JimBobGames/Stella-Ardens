@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\blank16.png" />
     <None Remove="Images\blue16.png" />
   </ItemGroup>
 
@@ -17,9 +18,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\blank16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\blue16.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Util\" />
   </ItemGroup>
 
 </Project>

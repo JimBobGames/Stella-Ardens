@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized"
         >
-    <DockPanel>
+    <DockPanel  LastChildFill="True">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_Open"/>
@@ -37,6 +37,38 @@
                 </Button>
             </StatusBarItem>
         </StatusBar>
-        <StackPanel/>
+        <StatusBar DockPanel.Dock="Bottom" x:Name="bottombar" VerticalAlignment="Bottom" Background="Beige" >
+            <StatusBarItem>
+                <TextBlock x:Name="Blahname" >
+                        Blah
+                </TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+        <StackPanel Height="auto" Width="auto" Background="Azure" >
+            <TabControl Name="MainTab" TabStripPlacement="Top" Background="Bisque" SelectionChanged="MainTabControl_SelectionChanged">
+                <TabControl.ItemContainerStyle>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                    </Style>
+                </TabControl.ItemContainerStyle>
+                <TabItem Name="MapTab" IsVisibleChanged="MapTab_IsVisibleChanged" >
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                            <TextBlock>Tab 1</TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel Height="600" Background="Black">
+                    <Canvas Name="MapCanvas" Background="CornflowerBlue">
+                            
+                        </Canvas>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Tab 2">
+                    <!--Bind TextBlock.Text to the TextBox on the first    TabItem.-->
+                    <TextBlock Text="{Binding ElementName=textBox1, Path=Text}"/>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
     </DockPanel>
 </Window>
