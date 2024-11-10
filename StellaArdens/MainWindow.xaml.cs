@@ -38,10 +38,13 @@ namespace StellaArdens
             UpdateAfterTurn();
         }
 
+        private const int XMOD = 10;
+        private const int YMOD = 10;
         private void GenerateDebugMap(IStellaArdensGame game)
         {
             MapCanvas.Children.Clear();
-           
+            MapCanvas.Background = Brushes.DarkBlue;
+
             Ellipse e1;
 
             foreach (SolarSystem ss in game.SolarSystems)
@@ -51,12 +54,13 @@ namespace StellaArdens
                 e1.Width = 50;
                 e1.Stroke = Brushes.Red;
                 e1.StrokeThickness = 5;
-                Canvas.SetLeft(e1, ss.Location.X * 100);
-                Canvas.SetTop(e1, ss.Location.Y * 100);
+                e1.Fill = Brushes.White;
+                Canvas.SetLeft(e1, ss.Location.X * XMOD);
+                Canvas.SetTop(e1, ss.Location.Y * YMOD);
                 MapCanvas.Children.Add(e1);
             }
 
-            
+            MapCanvas.InvalidateVisual();
         }
 
         public void UpdateAfterTurn()

@@ -58,11 +58,11 @@
                             <TextBlock>Tab 1</TextBlock>
                         </StackPanel>
                     </TabItem.Header>
-                    <StackPanel Height="600" Background="Black">
-                    <Canvas Name="MapCanvas" Background="CornflowerBlue">
-                            
+                    <DockPanel  LastChildFill="True" MinHeight="800">
+                        <Canvas Name="MapCanvas" Background="CornflowerBlue">
+
                         </Canvas>
-                    </StackPanel>
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="Tab 2">
                     <!--Bind TextBlock.Text to the TextBox on the first    TabItem.-->

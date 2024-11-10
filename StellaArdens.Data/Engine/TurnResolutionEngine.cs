@@ -153,6 +153,9 @@ namespace StellaArdens.Data.Engine
         public RaceReport GenerateReportForRace(int raceId, IStellaArdensGame game)
         {
             Race r = game.GetRace(raceId);
+            if (r == null) {
+                return new RaceReport() { Name = "Unknown" };
+            }
             RaceReport rr = new RaceReport() { Name = r.Name };
             rr.TurnNumber = game.TurnNumber;
             rr.Bank = r.Bank;
