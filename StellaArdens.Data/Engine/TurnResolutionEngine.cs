@@ -154,9 +154,9 @@ namespace StellaArdens.Data.Engine
         {
             Race r = game.GetRace(raceId);
             if (r == null) {
-                return new RaceReport() { Name = "Unknown" };
+                return new RaceReport() { Name = "Unknown", RaceId = -1, };
             }
-            RaceReport rr = new RaceReport() { Name = r.Name };
+            RaceReport rr = new RaceReport() { Name = r.Name, RaceId = r.RaceId };
             rr.TurnNumber = game.TurnNumber;
             rr.Bank = r.Bank;
 

@@ -7,19 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-[TestClass]
-public class TestReportGeneration
+namespace StellaArdens.Test.Engine
 {
-    [TestMethod]
-    public void TestSimpleReportGeneration()
+
+    [TestClass]
+    public class TestReportGeneration
     {
-        StandaloneStellaArdensGame game = TestGameCreator.CreateTestGame();
+        [TestMethod]
+        public void TestSimpleReportGeneration()
+        {
+            StandaloneStellaArdensGame game = TestGameCreator.CreateTestGame();
 
-        TurnResolutionEngine tre = new TurnResolutionEngine();
+            TurnResolutionEngine tre = new TurnResolutionEngine();
 
-        RaceReport r1  = tre.GenerateReportForRace(1, game);
-        Assert.IsNotNull(r1);
-
+            RaceReport r1 = tre.GenerateReportForRace(1, game);
+            Assert.IsNotNull(r1);
+            r1.Display();
+        }
     }
 }
