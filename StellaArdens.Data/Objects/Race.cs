@@ -11,5 +11,20 @@ namespace StellaArdens.Data.Objects
         public required int Bank { get; set; }
         public required int RaceId { get; set; }
         public required string? Name { get; set; }
+
+        public RaceSurveyData RaceSurveyData;
+
+        public int TotalIncome;
+    }
+    /// <summary>
+    /// Status information for survey command
+    /// </summary>
+    public struct RaceSurveyData
+    {
+        public int Priority = 0;
+
+        public RaceSurveyData()
+        {
+        }
     }
 }

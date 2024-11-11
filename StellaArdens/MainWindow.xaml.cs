@@ -27,8 +27,8 @@ namespace StellaArdens
             InitializeComponent();
 
             // create the game
-            controller.TurnResolutionEngine = new TurnResolutionEngine();
             controller.Game = TestGameCreator.CreateTestGame();
+            controller.TurnResolutionEngine = new TurnResolutionEngine(controller.Game);
             controller.RaceReport = controller.TurnResolutionEngine.GenerateReportForRace(controller.Game.Player.RaceId, controller.Game);
 
             // generate debug map

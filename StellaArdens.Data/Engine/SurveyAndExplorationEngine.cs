@@ -12,6 +12,8 @@ namespace StellaArdens.Data.Engine
     {
         internal static void ResolveSurveyAndExplorationSpending(Race r, StratgicPriorities sp)
         {
+            // record the priorities
+            r.RaceSurveyData.Priority = sp.Value;
         }
     }
 }

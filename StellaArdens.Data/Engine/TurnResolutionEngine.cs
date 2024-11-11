@@ -11,6 +11,11 @@ namespace StellaArdens.Data.Engine
 {
     public class TurnResolutionEngine : AbstractEngine
     {
+        public TurnResolutionEngine(IStellaArdensGame? game) 
+        {
+            this.Game = game;
+        }
+
         public void RunTurn(IStellaArdensGame? game)
         {
             this.Game = game;
@@ -35,7 +40,7 @@ namespace StellaArdens.Data.Engine
 
         }
 
-        private void RunTurnForRace(Race r, IStellaArdensGame game)
+        public void RunTurnForRace(Race r, IStellaArdensGame game)
         {
             // resolving turn for race
             game.GameEventLog.AddEvent(game.TurnNumber, GameEventCategory.DebugEvent, GameEventType.RacialUpdateEvent, r.RaceId);
@@ -89,6 +94,8 @@ namespace StellaArdens.Data.Engine
 
             // stub income of 1000;
             TotalIncome = 1000;
+
+            r.TotalIncome = TotalIncome;
 
             r.Bank += TotalIncome;
             Game.GameEventLog.AddEvent(this.Game.TurnNumber, GameEventCategory.InformationEvent, GameEventType.IncomeUpdateEvent, r.RaceId, TotalIncome, r.Bank);
@@ -159,6 +166,9 @@ namespace StellaArdens.Data.Engine
             RaceReport rr = new RaceReport() { Name = r.Name, RaceId = r.RaceId };
             rr.TurnNumber = game.TurnNumber;
             rr.Bank = r.Bank;
+            rr.TotalIncome = r.TotalIncome;
+
+            rr.RaceSurveyReport.Priority = r.RaceSurveyData.Priority;
 
             return rr;
         }
