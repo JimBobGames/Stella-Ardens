@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -24,11 +25,47 @@ namespace StellaArdens.Data.Game
             ReferenceDataLoader.LoadReferenceData(g);
             CreateMap(g, 10);
             CreateRaces(g);
-            CreateDesigns(g);
-           
-            CreateFleetsAndTaskForces(g);
             */
+
+            CreateDesigns(g);
+            CreateFleetsAndTaskForces(g);
+          
             return g;
+        }
+        private static void CreateDesigns(IStellaArdensGame game)
+        {
+            Design d = new Design()
+            {
+                Name = "Explorer",
+                DesignId = GameStandardIds.TERRAN_SCOUT_DESIGNID,
+                RaceId = GameStandardIds.RACEID_TERRANS,
+                Maintainance = 100,
+                StrategicSpeed = 4,
+                TacticalSpeed = 5,
+                DesignType = DesignType.Starship,
+                
+            };
+            game.AddDesign(d);
+        }
+
+        private static void CreateFleetsAndTaskForces(IStellaArdensGame game)
+        {
+            Fleet f = new Fleet()
+            {
+                Name = "Survey Fleet 1",
+                FleetId = GameStandardIds.TERRAN_SURVEYFLEET01_FLEETID,
+                RaceId = GameStandardIds.RACEID_TERRANS,
+                BudgetAreas = Engine.BudgetAreas.SurveyAndExploration,
+            };
+            game.AddFleet(f);
+
+            // create a ship
+            Unit u = new Unit() {
+                Name = "Explorer 01",
+                DesignId = GameStandardIds.TERRAN_SCOUT_DESIGNID,
+                UnitId = game.NextId(),
+            };
+            f.Units.Add(u);
         }
 
         private static void CreatePlayer(IStellaArdensGame game)

@@ -14,6 +14,8 @@ namespace StellaArdens.Data.Objects
 
         public RaceSurveyData RaceSurveyData;
 
+        public RacePreferredDeignData RacePreferredDeignData;
+
         public int TotalIncome;
     }
     /// <summary>
@@ -24,6 +26,14 @@ namespace StellaArdens.Data.Objects
         public int Priority = 0;
 
         public RaceSurveyData()
+        {
+        }
+    }
+
+    public struct RacePreferredDeignData
+    {
+        public int scoutDesignId = 0;
+        public RacePreferredDeignData()
         {
         }
     }

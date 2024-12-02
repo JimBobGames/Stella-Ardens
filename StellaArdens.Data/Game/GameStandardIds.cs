@@ -16,6 +16,7 @@ namespace StellaArdens.Data.Game
         public const int TERRAN_ESCORT_DESIGNID = 101;
         public const int TERRAN_CORVETTE_DESIGNID = 102;
         public const int TERRAN_FRIGATE_DESIGNID = 103;
+        public const int TERRAN_SCOUT_DESIGNID = 104;
 
         public const int ORION_DESTROYER_DESIGNID = 110;
 
@@ -26,7 +27,7 @@ namespace StellaArdens.Data.Game
         public const int HEFRY_SOLARSYSTEMID = 3;
         public const int JENGHE_SOLARSYSTEMID = 4;
 
-
+        public const int TERRAN_SURVEYFLEET01_FLEETID = 201;
 
 
         public const int SOL_TERRANSHIPYARDID = 1;
